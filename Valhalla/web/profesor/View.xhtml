@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProfesorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProfesorLabel_id}"/>
+                    <h:outputText value="#{profesorController.selected.id}" title="#{bundle.ViewProfesorTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewProfesorLabel_nombre}"/>
+                    <h:outputText value="#{profesorController.selected.nombre}" title="#{bundle.ViewProfesorTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewProfesorLabel_apellidoPaterno}"/>
+                    <h:outputText value="#{profesorController.selected.apellidoPaterno}" title="#{bundle.ViewProfesorTitle_apellidoPaterno}"/>
+                    <h:outputText value="#{bundle.ViewProfesorLabel_apellidoMaterno}"/>
+                    <h:outputText value="#{profesorController.selected.apellidoMaterno}" title="#{bundle.ViewProfesorTitle_apellidoMaterno}"/>
+                    <h:outputText value="#{bundle.ViewProfesorLabel_email}"/>
+                    <h:outputText value="#{profesorController.selected.email}" title="#{bundle.ViewProfesorTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewProfesorLabel_createdAt}"/>
+                    <h:outputText value="#{profesorController.selected.createdAt}" title="#{bundle.ViewProfesorTitle_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProfesorLabel_updatedAt}"/>
+                    <h:outputText value="#{profesorController.selected.updatedAt}" title="#{bundle.ViewProfesorTitle_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{profesorController.destroyAndView}" value="#{bundle.ViewProfesorDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProfesorEditLink}"/>
+                <br />
+                <h:commandLink action="#{profesorController.prepareCreate}" value="#{bundle.ViewProfesorCreateLink}" />
+                <br />
+                <h:commandLink action="#{profesorController.prepareList}" value="#{bundle.ViewProfesorShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProfesorIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

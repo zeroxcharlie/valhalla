@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProfesorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProfesorLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{profesorController.selected.id}" title="#{bundle.CreateProfesorTitle_id}" required="true" requiredMessage="#{bundle.CreateProfesorRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateProfesorLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{profesorController.selected.nombre}" title="#{bundle.CreateProfesorTitle_nombre}" required="true" requiredMessage="#{bundle.CreateProfesorRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateProfesorLabel_apellidoPaterno}" for="apellidoPaterno" />
+                    <h:inputText id="apellidoPaterno" value="#{profesorController.selected.apellidoPaterno}" title="#{bundle.CreateProfesorTitle_apellidoPaterno}" required="true" requiredMessage="#{bundle.CreateProfesorRequiredMessage_apellidoPaterno}"/>
+                    <h:outputLabel value="#{bundle.CreateProfesorLabel_apellidoMaterno}" for="apellidoMaterno" />
+                    <h:inputText id="apellidoMaterno" value="#{profesorController.selected.apellidoMaterno}" title="#{bundle.CreateProfesorTitle_apellidoMaterno}" required="true" requiredMessage="#{bundle.CreateProfesorRequiredMessage_apellidoMaterno}"/>
+                    <h:outputLabel value="#{bundle.CreateProfesorLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{profesorController.selected.email}" title="#{bundle.CreateProfesorTitle_email}" required="true" requiredMessage="#{bundle.CreateProfesorRequiredMessage_email}"/>
+                    <h:outputLabel value="#{bundle.CreateProfesorLabel_createdAt}" for="createdAt" />
+                    <h:inputText id="createdAt" value="#{profesorController.selected.createdAt}" title="#{bundle.CreateProfesorTitle_createdAt}" required="true" requiredMessage="#{bundle.CreateProfesorRequiredMessage_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateProfesorLabel_updatedAt}" for="updatedAt" />
+                    <h:inputText id="updatedAt" value="#{profesorController.selected.updatedAt}" title="#{bundle.CreateProfesorTitle_updatedAt}" required="true" requiredMessage="#{bundle.CreateProfesorRequiredMessage_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{profesorController.create}" value="#{bundle.CreateProfesorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{profesorController.prepareList}" value="#{bundle.CreateProfesorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProfesorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

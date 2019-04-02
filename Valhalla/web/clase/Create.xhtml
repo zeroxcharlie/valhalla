@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateClaseTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateClaseLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{claseController.selected.id}" title="#{bundle.CreateClaseTitle_id}" required="true" requiredMessage="#{bundle.CreateClaseRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateClaseLabel_semestre}" for="semestre" />
+                    <h:inputText id="semestre" value="#{claseController.selected.semestre}" title="#{bundle.CreateClaseTitle_semestre}" required="true" requiredMessage="#{bundle.CreateClaseRequiredMessage_semestre}"/>
+                    <h:outputLabel value="#{bundle.CreateClaseLabel_createdAt}" for="createdAt" />
+                    <h:inputText id="createdAt" value="#{claseController.selected.createdAt}" title="#{bundle.CreateClaseTitle_createdAt}" required="true" requiredMessage="#{bundle.CreateClaseRequiredMessage_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateClaseLabel_updatedAt}" for="updatedAt" />
+                    <h:inputText id="updatedAt" value="#{claseController.selected.updatedAt}" title="#{bundle.CreateClaseTitle_updatedAt}" required="true" requiredMessage="#{bundle.CreateClaseRequiredMessage_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateClaseLabel_materiaId}" for="materiaId" />
+                    <h:selectOneMenu id="materiaId" value="#{claseController.selected.materiaId}" title="#{bundle.CreateClaseTitle_materiaId}" required="true" requiredMessage="#{bundle.CreateClaseRequiredMessage_materiaId}">
+                        <f:selectItems value="#{materiaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateClaseLabel_profesorId}" for="profesorId" />
+                    <h:selectOneMenu id="profesorId" value="#{claseController.selected.profesorId}" title="#{bundle.CreateClaseTitle_profesorId}" required="true" requiredMessage="#{bundle.CreateClaseRequiredMessage_profesorId}">
+                        <f:selectItems value="#{profesorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{claseController.create}" value="#{bundle.CreateClaseSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{claseController.prepareList}" value="#{bundle.CreateClaseShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateClaseIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

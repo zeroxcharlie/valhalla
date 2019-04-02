@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAccesoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAccesoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{accesoController.selected.id}" title="#{bundle.CreateAccesoTitle_id}" required="true" requiredMessage="#{bundle.CreateAccesoRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateAccesoLabel_entrada}" for="entrada" />
+                    <h:inputText id="entrada" value="#{accesoController.selected.entrada}" title="#{bundle.CreateAccesoTitle_entrada}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAccesoLabel_salida}" for="salida" />
+                    <h:inputText id="salida" value="#{accesoController.selected.salida}" title="#{bundle.CreateAccesoTitle_salida}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAccesoLabel_objetivo}" for="objetivo" />
+                    <h:inputText id="objetivo" value="#{accesoController.selected.objetivo}" title="#{bundle.CreateAccesoTitle_objetivo}" required="true" requiredMessage="#{bundle.CreateAccesoRequiredMessage_objetivo}"/>
+                    <h:outputLabel value="#{bundle.CreateAccesoLabel_createdAt}" for="createdAt" />
+                    <h:inputText id="createdAt" value="#{accesoController.selected.createdAt}" title="#{bundle.CreateAccesoTitle_createdAt}" required="true" requiredMessage="#{bundle.CreateAccesoRequiredMessage_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAccesoLabel_updatedAt}" for="updatedAt" />
+                    <h:inputText id="updatedAt" value="#{accesoController.selected.updatedAt}" title="#{bundle.CreateAccesoTitle_updatedAt}" required="true" requiredMessage="#{bundle.CreateAccesoRequiredMessage_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAccesoLabel_alumnoId}" for="alumnoId" />
+                    <h:selectOneMenu id="alumnoId" value="#{accesoController.selected.alumnoId}" title="#{bundle.CreateAccesoTitle_alumnoId}" >
+                        <f:selectItems value="#{alumnoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateAccesoLabel_externoId}" for="externoId" />
+                    <h:selectOneMenu id="externoId" value="#{accesoController.selected.externoId}" title="#{bundle.CreateAccesoTitle_externoId}" >
+                        <f:selectItems value="#{externoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{accesoController.create}" value="#{bundle.CreateAccesoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{accesoController.prepareList}" value="#{bundle.CreateAccesoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAccesoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPrestadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPrestadorLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{prestadorController.selected.id}" title="#{bundle.EditPrestadorTitle_id}" required="true" requiredMessage="#{bundle.EditPrestadorRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditPrestadorLabel_rol}" for="rol" />
+                    <h:inputText id="rol" value="#{prestadorController.selected.rol}" title="#{bundle.EditPrestadorTitle_rol}" required="true" requiredMessage="#{bundle.EditPrestadorRequiredMessage_rol}"/>
+                    <h:outputLabel value="#{bundle.EditPrestadorLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{prestadorController.selected.nombre}" title="#{bundle.EditPrestadorTitle_nombre}" required="true" requiredMessage="#{bundle.EditPrestadorRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditPrestadorLabel_apellidoPaterno}" for="apellidoPaterno" />
+                    <h:inputText id="apellidoPaterno" value="#{prestadorController.selected.apellidoPaterno}" title="#{bundle.EditPrestadorTitle_apellidoPaterno}" required="true" requiredMessage="#{bundle.EditPrestadorRequiredMessage_apellidoPaterno}"/>
+                    <h:outputLabel value="#{bundle.EditPrestadorLabel_apellidoMaterno}" for="apellidoMaterno" />
+                    <h:inputText id="apellidoMaterno" value="#{prestadorController.selected.apellidoMaterno}" title="#{bundle.EditPrestadorTitle_apellidoMaterno}" required="true" requiredMessage="#{bundle.EditPrestadorRequiredMessage_apellidoMaterno}"/>
+                    <h:outputLabel value="#{bundle.EditPrestadorLabel_inicio}" for="inicio" />
+                    <h:inputText id="inicio" value="#{prestadorController.selected.inicio}" title="#{bundle.EditPrestadorTitle_inicio}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPrestadorLabel_termino}" for="termino" />
+                    <h:inputText id="termino" value="#{prestadorController.selected.termino}" title="#{bundle.EditPrestadorTitle_termino}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPrestadorLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{prestadorController.selected.activo}" title="#{bundle.EditPrestadorTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditPrestadorLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{prestadorController.selected.email}" title="#{bundle.EditPrestadorTitle_email}" required="true" requiredMessage="#{bundle.EditPrestadorRequiredMessage_email}"/>
+                    <h:outputLabel value="#{bundle.EditPrestadorLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{prestadorController.selected.password}" title="#{bundle.EditPrestadorTitle_password}" required="true" requiredMessage="#{bundle.EditPrestadorRequiredMessage_password}"/>
+                    <h:outputLabel value="#{bundle.EditPrestadorLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{prestadorController.selected.telefono}" title="#{bundle.EditPrestadorTitle_telefono}" required="true" requiredMessage="#{bundle.EditPrestadorRequiredMessage_telefono}"/>
+                    <h:outputLabel value="#{bundle.EditPrestadorLabel_createdAt}" for="createdAt" />
+                    <h:inputText id="createdAt" value="#{prestadorController.selected.createdAt}" title="#{bundle.EditPrestadorTitle_createdAt}" required="true" requiredMessage="#{bundle.EditPrestadorRequiredMessage_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPrestadorLabel_updatedAt}" for="updatedAt" />
+                    <h:inputText id="updatedAt" value="#{prestadorController.selected.updatedAt}" title="#{bundle.EditPrestadorTitle_updatedAt}" required="true" requiredMessage="#{bundle.EditPrestadorRequiredMessage_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{prestadorController.update}" value="#{bundle.EditPrestadorSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPrestadorViewLink}"/>
+                <br />
+                <h:commandLink action="#{prestadorController.prepareList}" value="#{bundle.EditPrestadorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPrestadorIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

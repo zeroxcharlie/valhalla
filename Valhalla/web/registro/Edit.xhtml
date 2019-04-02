@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRegistroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRegistroLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{registroController.selected.id}" title="#{bundle.EditRegistroTitle_id}" required="true" requiredMessage="#{bundle.EditRegistroRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditRegistroLabel_createdAt}" for="createdAt" />
+                    <h:inputText id="createdAt" value="#{registroController.selected.createdAt}" title="#{bundle.EditRegistroTitle_createdAt}" required="true" requiredMessage="#{bundle.EditRegistroRequiredMessage_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRegistroLabel_updatedAt}" for="updatedAt" />
+                    <h:inputText id="updatedAt" value="#{registroController.selected.updatedAt}" title="#{bundle.EditRegistroTitle_updatedAt}" required="true" requiredMessage="#{bundle.EditRegistroRequiredMessage_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRegistroLabel_alumnoId}" for="alumnoId" />
+                    <h:selectOneMenu id="alumnoId" value="#{registroController.selected.alumnoId}" title="#{bundle.EditRegistroTitle_alumnoId}" required="true" requiredMessage="#{bundle.EditRegistroRequiredMessage_alumnoId}">
+                        <f:selectItems value="#{alumnoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRegistroLabel_equipoId}" for="equipoId" />
+                    <h:selectOneMenu id="equipoId" value="#{registroController.selected.equipoId}" title="#{bundle.EditRegistroTitle_equipoId}" required="true" requiredMessage="#{bundle.EditRegistroRequiredMessage_equipoId}">
+                        <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{registroController.update}" value="#{bundle.EditRegistroSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRegistroViewLink}"/>
+                <br />
+                <h:commandLink action="#{registroController.prepareList}" value="#{bundle.EditRegistroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRegistroIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

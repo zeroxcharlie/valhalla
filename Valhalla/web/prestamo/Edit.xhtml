@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPrestamoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPrestamoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{prestamoController.selected.id}" title="#{bundle.EditPrestamoTitle_id}" required="true" requiredMessage="#{bundle.EditPrestamoRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditPrestamoLabel_esKit}" for="esKit" />
+                    <h:inputText id="esKit" value="#{prestamoController.selected.esKit}" title="#{bundle.EditPrestamoTitle_esKit}" />
+                    <h:outputLabel value="#{bundle.EditPrestamoLabel_comentario}" for="comentario" />
+                    <h:inputText id="comentario" value="#{prestamoController.selected.comentario}" title="#{bundle.EditPrestamoTitle_comentario}" required="true" requiredMessage="#{bundle.EditPrestamoRequiredMessage_comentario}"/>
+                    <h:outputLabel value="#{bundle.EditPrestamoLabel_prestamofecha}" for="prestamofecha" />
+                    <h:inputText id="prestamofecha" value="#{prestamoController.selected.prestamofecha}" title="#{bundle.EditPrestamoTitle_prestamofecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPrestamoLabel_prestamocantidad}" for="prestamocantidad" />
+                    <h:inputText id="prestamocantidad" value="#{prestamoController.selected.prestamocantidad}" title="#{bundle.EditPrestamoTitle_prestamocantidad}" />
+                    <h:outputLabel value="#{bundle.EditPrestamoLabel_devolucionfecha}" for="devolucionfecha" />
+                    <h:inputText id="devolucionfecha" value="#{prestamoController.selected.devolucionfecha}" title="#{bundle.EditPrestamoTitle_devolucionfecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPrestamoLabel_devolucioncantidad}" for="devolucioncantidad" />
+                    <h:inputText id="devolucioncantidad" value="#{prestamoController.selected.devolucioncantidad}" title="#{bundle.EditPrestamoTitle_devolucioncantidad}" />
+                    <h:outputLabel value="#{bundle.EditPrestamoLabel_createdAt}" for="createdAt" />
+                    <h:inputText id="createdAt" value="#{prestamoController.selected.createdAt}" title="#{bundle.EditPrestamoTitle_createdAt}" required="true" requiredMessage="#{bundle.EditPrestamoRequiredMessage_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPrestamoLabel_updatedAt}" for="updatedAt" />
+                    <h:inputText id="updatedAt" value="#{prestamoController.selected.updatedAt}" title="#{bundle.EditPrestamoTitle_updatedAt}" required="true" requiredMessage="#{bundle.EditPrestamoRequiredMessage_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPrestamoLabel_articuloId}" for="articuloId" />
+                    <h:selectOneMenu id="articuloId" value="#{prestamoController.selected.articuloId}" title="#{bundle.EditPrestamoTitle_articuloId}" required="true" requiredMessage="#{bundle.EditPrestamoRequiredMessage_articuloId}">
+                        <f:selectItems value="#{articuloController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPrestamoLabel_devolucionPrestadorId}" for="devolucionPrestadorId" />
+                    <h:selectOneMenu id="devolucionPrestadorId" value="#{prestamoController.selected.devolucionPrestadorId}" title="#{bundle.EditPrestamoTitle_devolucionPrestadorId}" >
+                        <f:selectItems value="#{prestadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPrestamoLabel_equipoId}" for="equipoId" />
+                    <h:selectOneMenu id="equipoId" value="#{prestamoController.selected.equipoId}" title="#{bundle.EditPrestamoTitle_equipoId}" required="true" requiredMessage="#{bundle.EditPrestamoRequiredMessage_equipoId}">
+                        <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPrestamoLabel_prestamoPrestadorId}" for="prestamoPrestadorId" />
+                    <h:selectOneMenu id="prestamoPrestadorId" value="#{prestamoController.selected.prestamoPrestadorId}" title="#{bundle.EditPrestamoTitle_prestamoPrestadorId}" >
+                        <f:selectItems value="#{prestadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{prestamoController.update}" value="#{bundle.EditPrestamoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPrestamoViewLink}"/>
+                <br />
+                <h:commandLink action="#{prestamoController.prepareList}" value="#{bundle.EditPrestamoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPrestamoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

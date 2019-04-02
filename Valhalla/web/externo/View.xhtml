@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewExternoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewExternoLabel_id}"/>
+                    <h:outputText value="#{externoController.selected.id}" title="#{bundle.ViewExternoTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewExternoLabel_nombre}"/>
+                    <h:outputText value="#{externoController.selected.nombre}" title="#{bundle.ViewExternoTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewExternoLabel_apellidoPaterno}"/>
+                    <h:outputText value="#{externoController.selected.apellidoPaterno}" title="#{bundle.ViewExternoTitle_apellidoPaterno}"/>
+                    <h:outputText value="#{bundle.ViewExternoLabel_apellidoMaterno}"/>
+                    <h:outputText value="#{externoController.selected.apellidoMaterno}" title="#{bundle.ViewExternoTitle_apellidoMaterno}"/>
+                    <h:outputText value="#{bundle.ViewExternoLabel_procedencia}"/>
+                    <h:outputText value="#{externoController.selected.procedencia}" title="#{bundle.ViewExternoTitle_procedencia}"/>
+                    <h:outputText value="#{bundle.ViewExternoLabel_email}"/>
+                    <h:outputText value="#{externoController.selected.email}" title="#{bundle.ViewExternoTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewExternoLabel_createdAt}"/>
+                    <h:outputText value="#{externoController.selected.createdAt}" title="#{bundle.ViewExternoTitle_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewExternoLabel_updatedAt}"/>
+                    <h:outputText value="#{externoController.selected.updatedAt}" title="#{bundle.ViewExternoTitle_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{externoController.destroyAndView}" value="#{bundle.ViewExternoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewExternoEditLink}"/>
+                <br />
+                <h:commandLink action="#{externoController.prepareCreate}" value="#{bundle.ViewExternoCreateLink}" />
+                <br />
+                <h:commandLink action="#{externoController.prepareList}" value="#{bundle.ViewExternoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewExternoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

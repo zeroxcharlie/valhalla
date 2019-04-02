@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMateriaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMateriaLabel_id}"/>
+                    <h:outputText value="#{materiaController.selected.id}" title="#{bundle.ViewMateriaTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewMateriaLabel_nombre}"/>
+                    <h:outputText value="#{materiaController.selected.nombre}" title="#{bundle.ViewMateriaTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewMateriaLabel_createdAt}"/>
+                    <h:outputText value="#{materiaController.selected.createdAt}" title="#{bundle.ViewMateriaTitle_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewMateriaLabel_updatedAt}"/>
+                    <h:outputText value="#{materiaController.selected.updatedAt}" title="#{bundle.ViewMateriaTitle_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{materiaController.destroyAndView}" value="#{bundle.ViewMateriaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMateriaEditLink}"/>
+                <br />
+                <h:commandLink action="#{materiaController.prepareCreate}" value="#{bundle.ViewMateriaCreateLink}" />
+                <br />
+                <h:commandLink action="#{materiaController.prepareList}" value="#{bundle.ViewMateriaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMateriaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

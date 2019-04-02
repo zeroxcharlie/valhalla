@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRegistroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRegistroLabel_id}"/>
+                    <h:outputText value="#{registroController.selected.id}" title="#{bundle.ViewRegistroTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewRegistroLabel_createdAt}"/>
+                    <h:outputText value="#{registroController.selected.createdAt}" title="#{bundle.ViewRegistroTitle_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewRegistroLabel_updatedAt}"/>
+                    <h:outputText value="#{registroController.selected.updatedAt}" title="#{bundle.ViewRegistroTitle_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewRegistroLabel_alumnoId}"/>
+                    <h:outputText value="#{registroController.selected.alumnoId}" title="#{bundle.ViewRegistroTitle_alumnoId}"/>
+                    <h:outputText value="#{bundle.ViewRegistroLabel_equipoId}"/>
+                    <h:outputText value="#{registroController.selected.equipoId}" title="#{bundle.ViewRegistroTitle_equipoId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{registroController.destroyAndView}" value="#{bundle.ViewRegistroDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRegistroEditLink}"/>
+                <br />
+                <h:commandLink action="#{registroController.prepareCreate}" value="#{bundle.ViewRegistroCreateLink}" />
+                <br />
+                <h:commandLink action="#{registroController.prepareList}" value="#{bundle.ViewRegistroShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRegistroIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

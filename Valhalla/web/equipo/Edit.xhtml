@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEquipoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{equipoController.selected.id}" title="#{bundle.EditEquipoTitle_id}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_deudaInicial}" for="deudaInicial" />
+                    <h:inputText id="deudaInicial" value="#{equipoController.selected.deudaInicial}" title="#{bundle.EditEquipoTitle_deudaInicial}" />
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_cajas}" for="cajas" />
+                    <h:inputText id="cajas" value="#{equipoController.selected.cajas}" title="#{bundle.EditEquipoTitle_cajas}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_cajas}"/>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_deudaActual}" for="deudaActual" />
+                    <h:inputText id="deudaActual" value="#{equipoController.selected.deudaActual}" title="#{bundle.EditEquipoTitle_deudaActual}" />
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_createdAt}" for="createdAt" />
+                    <h:inputText id="createdAt" value="#{equipoController.selected.createdAt}" title="#{bundle.EditEquipoTitle_createdAt}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_updatedAt}" for="updatedAt" />
+                    <h:inputText id="updatedAt" value="#{equipoController.selected.updatedAt}" title="#{bundle.EditEquipoTitle_updatedAt}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_claseId}" for="claseId" />
+                    <h:selectOneMenu id="claseId" value="#{equipoController.selected.claseId}" title="#{bundle.EditEquipoTitle_claseId}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_claseId}">
+                        <f:selectItems value="#{claseController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{equipoController.update}" value="#{bundle.EditEquipoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEquipoViewLink}"/>
+                <br />
+                <h:commandLink action="#{equipoController.prepareList}" value="#{bundle.EditEquipoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEquipoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

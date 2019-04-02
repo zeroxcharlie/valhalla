@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateArticuloTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateArticuloLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{articuloController.selected.id}" title="#{bundle.CreateArticuloTitle_id}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateArticuloLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{articuloController.selected.nombre}" title="#{bundle.CreateArticuloTitle_nombre}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateArticuloLabel_imagen}" for="imagen" />
+                    <h:inputText id="imagen" value="#{articuloController.selected.imagen}" title="#{bundle.CreateArticuloTitle_imagen}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_imagen}"/>
+                    <h:outputLabel value="#{bundle.CreateArticuloLabel_inventario}" for="inventario" />
+                    <h:inputText id="inventario" value="#{articuloController.selected.inventario}" title="#{bundle.CreateArticuloTitle_inventario}" />
+                    <h:outputLabel value="#{bundle.CreateArticuloLabel_apoyo}" for="apoyo" />
+                    <h:inputText id="apoyo" value="#{articuloController.selected.apoyo}" title="#{bundle.CreateArticuloTitle_apoyo}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_apoyo}"/>
+                    <h:outputLabel value="#{bundle.CreateArticuloLabel_disponible}" for="disponible" />
+                    <h:inputText id="disponible" value="#{articuloController.selected.disponible}" title="#{bundle.CreateArticuloTitle_disponible}" />
+                    <h:outputLabel value="#{bundle.CreateArticuloLabel_faltante}" for="faltante" />
+                    <h:inputText id="faltante" value="#{articuloController.selected.faltante}" title="#{bundle.CreateArticuloTitle_faltante}" />
+                    <h:outputLabel value="#{bundle.CreateArticuloLabel_precio}" for="precio" />
+                    <h:inputText id="precio" value="#{articuloController.selected.precio}" title="#{bundle.CreateArticuloTitle_precio}" />
+                    <h:outputLabel value="#{bundle.CreateArticuloLabel_createdAt}" for="createdAt" />
+                    <h:inputText id="createdAt" value="#{articuloController.selected.createdAt}" title="#{bundle.CreateArticuloTitle_createdAt}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateArticuloLabel_updatedAt}" for="updatedAt" />
+                    <h:inputText id="updatedAt" value="#{articuloController.selected.updatedAt}" title="#{bundle.CreateArticuloTitle_updatedAt}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{articuloController.create}" value="#{bundle.CreateArticuloSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{articuloController.prepareList}" value="#{bundle.CreateArticuloShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateArticuloIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
